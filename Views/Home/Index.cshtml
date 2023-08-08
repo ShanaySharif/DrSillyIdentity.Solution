@@ -1,0 +1,60 @@
+@{
+    Layout = "_Layout";
+}
+
+@using Factory.Models;
+
+
+
+<div class="container">
+    <h1 class="text-center">Dr. Silly Stringz Factory</h1>
+</div>
+<hr />
+<div class="text-center container-wrapper">
+    <div class="section">
+        <h2 class="mb-3">Machines</h2>
+        <p>
+            @Html.ActionLink("Manage Machines", "Index", "Machines", new { @class = "btn btn-primary" })
+        </p>
+
+        @if (Model["machines"] == null || Model["machines"].Length == 0)
+        {
+            <p>No machines have been added yet!</p>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (Machine machine in Model["machines"])
+                {
+                    <li class="list-group-item">
+                         @Html.ActionLink(@machine.MachineName, "Details", "Machines", new { id = @machine.MachineId }, new { @class = "link-item" }) 
+                    </li> 
+                }
+            </ul>
+        }
+    </div>
+
+    <div class="section">
+        <h2 class="mb-3">Engineers</h2>
+        <p>
+            @Html.ActionLink("Manage Engineers", "Index", "Engineers", new { @class = "btn btn-primary" })
+        </p>
+
+        @if (Model["engineers"] == null || Model["engineers"].Length == 0)
+        {
+            <p>No engineers have been added yet!</p>
+        }
+        else
+        {
+            <ul class="list-group">
+                @foreach (Engineer engineer in Model["engineers"])
+                {
+                    <li class="list-group-item">
+                        @Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId }, new { @class = "link-item" })
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+<hr />

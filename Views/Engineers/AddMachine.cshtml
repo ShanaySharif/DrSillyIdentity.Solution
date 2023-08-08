@@ -1,0 +1,31 @@
+@{
+    Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<div class="container">
+    <h1 class="text-center">Add Engineer to Machine</h1>
+</div>
+<hr />
+<div class="container">
+    <h2>Add @Html.DisplayFor(model => model.EngineerName) to a machine:</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="form-container">
+        @Html.HiddenFor(model => model.EngineerId)
+        <div class="mb-3">
+            @Html.Label("Select Machine:")
+            @Html.DropDownList("MachineId", ViewBag.MachineId as SelectList, new { @class = "form-select" })
+        </div>
+    </div>
+    <div class="text-center">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}
+<hr />
+<div class="link-container">
+    <p>@Html.ActionLink("Back to All Engineers", "Index", new { @class = "btn btn-secondary" })</p>
+</div>
